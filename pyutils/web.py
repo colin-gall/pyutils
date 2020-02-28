@@ -1,10 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-def web_scrape_crawl(url, crawl=None):
-	"""web scraper returning bs4 object"""
+import time
+import requests
+import requests.exceptions
+from bs4 import BeautifulSoup as bs
+
+def scrape_url(url, crawl=None):
+	"""Web scraper that returns a BeautifulSoup object."""
 	if crawl is not None:
-		time.sleep(crawl)
+		time.sleep(int(crawl))
 	try:
 		page = requests.get(url)
 		if page.status_code == 200:
@@ -29,3 +34,11 @@ def web_scrape_crawl(url, crawl=None):
 		print(err)
 		print("Unknown error occurred while trying to establish connection.")
 		return None
+
+def check_connection():
+	"""Checks for valid internet connection."""
+	test_url = 'https://google.com'
+	page = requests.get(test_url)
+	if page.status_code != 200:
+		return False
+	return True
