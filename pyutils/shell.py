@@ -50,3 +50,4 @@ def current_time(military=True):
 		else:
 			now = now + 'am'
 	return now
+
