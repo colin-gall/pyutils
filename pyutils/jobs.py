@@ -52,7 +52,7 @@ def queue_job(job, start_time, start_day, military_time=True, time_of_day='AM'):
 	elif start_day == 'Sunday':
 		schedule.every().sunday.at(start_time).do(job)
 
-def run_job():
+def run_jobs():
 	"""Schedules and runs queued jobs."""
 	while True:
 		x = 0
